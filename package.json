@@ -1,0 +1,40 @@
+{
+  "name": "eventscape",
+  "version": "0.2.0",
+  "private": true,
+  "packageManager": "bun@1.3.14",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "tsc --noEmit && bun --cwd apps/web check",
+    "build": "tsc -p packages/simulation-core/tsconfig.build.json && bun --cwd apps/web build",
+    "dev:api": "bun --watch apps/api/src/index.ts",
+    "dev:web": "bun --cwd apps/web dev",
+    "start:api": "bun apps/api/src/index.ts",
+    "worker": "bun apps/worker/src/index.ts",
+    "generate:results": "bun scripts/generate-publication-results.ts",
+    "prisma:generate": "prisma generate",
+    "db:migrate": "prisma migrate deploy",
+    "db:seed": "bun prisma/seed.ts",
+    "db:init": "bun scripts/container-init.ts",
+    "container:up": "docker compose up --build",
+    "container:down": "docker compose down",
+    "verify": "bun test && bun run typecheck && bun run build"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "latest",
+    "@elysiajs/openapi": "latest",
+    "@prisma/adapter-pg": "7.10.0",
+    "@prisma/client": "7.10.0",
+    "elysia": "latest"
+  },
+  "devDependencies": {
+    "@types/bun": "1.3.14",
+    "@types/node": "24.10.4",
+    "prisma": "7.10.0",
+    "typescript": "5.9.3"
+  }
+}

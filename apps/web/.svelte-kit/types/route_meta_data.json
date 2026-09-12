@@ -1,0 +1,13 @@
+{
+	"/": [
+		"src/routes/+page.server.ts"
+	],
+	"/about/model-card": [],
+	"/lab": [
+		"src/routes/lab/+page.server.ts"
+	],
+	"/methodology": [],
+	"/results": [
+		"src/routes/results/+page.server.ts"
+	]
+}

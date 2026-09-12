@@ -1,0 +1,1 @@
+import{G as e}from"./DAmdPt79.js";e();

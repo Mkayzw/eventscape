@@ -1,0 +1,14 @@
+{
+  "name": "@eventscape/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@elysiajs/cors": "latest",
+    "@elysiajs/openapi": "latest",
+    "@eventscape/simulation-core": "workspace:*",
+    "@prisma/adapter-pg": "7.10.0",
+    "@prisma/client": "7.10.0",
+    "elysia": "latest"
+  }
+}

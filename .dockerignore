@@ -1,0 +1,13 @@
+.git
+.vscode
+node_modules
+**/node_modules
+apps/web/.svelte-kit
+apps/web/build
+packages/simulation-core/dist
+coverage
+*.log
+artifacts
+.env
+.env.*
+!/.env.example

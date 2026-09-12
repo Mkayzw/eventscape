@@ -1,0 +1,170 @@
+[
+  {
+    "policy": "popularity",
+    "replicationCount": 8,
+    "metrics": {
+      "attendanceRate": {
+        "mean": 0.29687499999999994,
+        "lower95": 0.277368190291593,
+        "upper95": 0.3163818097084069,
+        "validReplicationCount": 8
+      },
+      "meanRelevance": {
+        "mean": 0.5153380734921762,
+        "lower95": 0.45264450558341385,
+        "upper95": 0.5780316414009385,
+        "validReplicationCount": 8
+      },
+      "exposureGini": {
+        "mean": 0.8125,
+        "lower95": 0.8125,
+        "upper95": 0.8125,
+        "validReplicationCount": 8
+      },
+      "sameGroupEdgeShare": {
+        "mean": 0.6799777266879791,
+        "lower95": 0.6653333040137288,
+        "upper95": 0.6946221493622293,
+        "validReplicationCount": 8
+      },
+      "crossGroupTieRate": {
+        "mean": 0.5936507936507937,
+        "lower95": 0.47410592630534054,
+        "upper95": 0.7131956609962468,
+        "validReplicationCount": 8
+      },
+      "catalogCoverage": {
+        "mean": 0.1875,
+        "lower95": 0.1875,
+        "upper95": 0.1875,
+        "validReplicationCount": 8
+      }
+    }
+  },
+  {
+    "policy": "relevance",
+    "replicationCount": 8,
+    "metrics": {
+      "attendanceRate": {
+        "mean": 0.4828125,
+        "lower95": 0.457905720676892,
+        "upper95": 0.507719279323108,
+        "validReplicationCount": 8
+      },
+      "meanRelevance": {
+        "mean": 0.697095170002861,
+        "lower95": 0.6800438180452963,
+        "upper95": 0.7141465219604257,
+        "validReplicationCount": 8
+      },
+      "exposureGini": {
+        "mean": 0.6944010416666666,
+        "lower95": 0.6819584903037667,
+        "upper95": 0.7068435930295666,
+        "validReplicationCount": 8
+      },
+      "sameGroupEdgeShare": {
+        "mean": 0.6307756557219802,
+        "lower95": 0.6152748128363316,
+        "upper95": 0.6462764986076289,
+        "validReplicationCount": 8
+      },
+      "crossGroupTieRate": {
+        "mean": 0.5591687552213869,
+        "lower95": 0.4745163592398657,
+        "upper95": 0.6438211512029081,
+        "validReplicationCount": 8
+      },
+      "catalogCoverage": {
+        "mean": 0.375,
+        "lower95": 0.375,
+        "upper95": 0.375,
+        "validReplicationCount": 8
+      }
+    }
+  },
+  {
+    "policy": "social",
+    "replicationCount": 8,
+    "metrics": {
+      "attendanceRate": {
+        "mean": 0.51875,
+        "lower95": 0.49606740755557255,
+        "upper95": 0.5414325924444275,
+        "validReplicationCount": 8
+      },
+      "meanRelevance": {
+        "mean": 0.6691198268158349,
+        "lower95": 0.6481798364452959,
+        "upper95": 0.690059817186374,
+        "validReplicationCount": 8
+      },
+      "exposureGini": {
+        "mean": 0.6451388888888889,
+        "lower95": 0.6384555502643785,
+        "upper95": 0.6518222275133994,
+        "validReplicationCount": 8
+      },
+      "sameGroupEdgeShare": {
+        "mean": 0.7855711026209449,
+        "lower95": 0.7623860177077383,
+        "upper95": 0.8087561875341515,
+        "validReplicationCount": 8
+      },
+      "crossGroupTieRate": {
+        "mean": 0.2964985994397759,
+        "lower95": 0.24378059921159542,
+        "upper95": 0.34921659966795643,
+        "validReplicationCount": 8
+      },
+      "catalogCoverage": {
+        "mean": 0.375,
+        "lower95": 0.375,
+        "upper95": 0.375,
+        "validReplicationCount": 8
+      }
+    }
+  },
+  {
+    "policy": "bridge-aware",
+    "replicationCount": 8,
+    "metrics": {
+      "attendanceRate": {
+        "mean": 0.5703125,
+        "lower95": 0.5264031028707977,
+        "upper95": 0.6142218971292023,
+        "validReplicationCount": 8
+      },
+      "meanRelevance": {
+        "mean": 0.6854227900852013,
+        "lower95": 0.6673036784675596,
+        "upper95": 0.7035419017028431,
+        "validReplicationCount": 8
+      },
+      "exposureGini": {
+        "mean": 0.6178575303819445,
+        "lower95": 0.5939331542537409,
+        "upper95": 0.641781906510148,
+        "validReplicationCount": 8
+      },
+      "sameGroupEdgeShare": {
+        "mean": 0.6382194525567284,
+        "lower95": 0.6235062025410725,
+        "upper95": 0.6529327025723843,
+        "validReplicationCount": 8
+      },
+      "crossGroupTieRate": {
+        "mean": 0.5326680672268908,
+        "lower95": 0.42499317127619535,
+        "upper95": 0.6403429631775861,
+        "validReplicationCount": 8
+      },
+      "catalogCoverage": {
+        "mean": 0.578125,
+        "lower95": 0.5332945903989268,
+        "upper95": 0.6229554096010732,
+        "validReplicationCount": 8
+      }
+    }
+  }
+]

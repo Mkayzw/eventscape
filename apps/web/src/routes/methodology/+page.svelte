@@ -1,0 +1,12 @@
+<main>
+  <article class="document">
+    <div class="eyebrow">Methods</div><h1>Model specification</h1>
+    <p class="lede">EventScape is an agent-based model of repeated recommendation, attendance, and tie formation. It is designed for theory-building and software verification, not prediction about real populations.</p>
+    <section><h2>State transition</h2><p>At each timestep, every available agent receives a feasible event list. A policy ranks that list. Attendance is sampled from an interpretable logistic utility function, capacity is resolved deterministically from a seeded stream, and co-attendance can create or strengthen ties.</p><div class="equation">P(Aᵤₑₜ = 1) = σ(θ₀ + θᵣRᵤₑₜ + θₛSᵤₑₜ + θᵦBᵤₑₜ − θ𝚌Cᵤₑₜ)</div></section>
+    <section><h2>Recommendation policies</h2><ol><li><strong>Popularity</strong> ranks current demand.</li><li><strong>Relevance</strong> ranks content affinity and quality.</li><li><strong>Social</strong> adds evidence from existing ties.</li><li><strong>Bridge-aware</strong> retains relevance, then rewards events with balanced expected attendance across synthetic groups and broader organizer coverage while penalizing concentration.</li></ol></section>
+    <section><h2>Randomness and reproduction</h2><p>The core uses xoshiro256** with SHA-256-derived named streams. Population, network, choice, capacity, and tie formation are isolated so unrelated random draws cannot silently alter later outcomes. Scientific inputs receive a canonical SHA-256 fingerprint.</p></section>
+    <section><h2>Measurement</h2><p>Outcomes remain separate: attendance, relevance, organizer exposure Gini, same-group weighted edge share, cross-group tie formation, and catalog coverage. Confidence intervals use independent runs; timesteps are not treated as independent observations.</p></section>
+    <section><h2>Interpretation boundary</h2><div class="warning">Synthetic group labels are controlled variables, not representations of race, ethnicity, nationality, or migration status. “Integration” refers only to declared exposure and network measures.</div></section>
+  </article>
+</main>
+<style>.document { max-width: 820px; padding: 5rem 0; }.document section { border-top: 1px solid var(--rule); padding: 2rem 0; }.equation { overflow-x: auto; padding: 1.5rem; background: var(--surface); border: 1px solid var(--rule); font: 1.08rem ui-monospace, monospace; } li { margin: .75rem 0; line-height: 1.5; }</style>

@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use EventScape, cite this software and the archived release."
+title: "EventScape: A Reproducible Laboratory for Recommendation-Driven Social Dynamics"
+type: software
+version: 0.2.0
+date-released: 2026-09-12
+license: MIT
+authors:
+  - name: "EventScape contributors"
+abstract: "A deterministic agent-based research platform for studying recommendation policy, participation, provider exposure, and synthetic social-network outcomes."
+keywords:
+  - recommender systems
+  - agent-based modelling
+  - computational social science
+  - reproducible research

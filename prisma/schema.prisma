@@ -1,0 +1,51 @@
+generator client {
+    provider = "prisma-client"
+    output   = "../packages/persistence/generated"
+}
+
+datasource db {
+    provider = "postgresql"
+}
+
+enum ExperimentStatus {
+    QUEUED
+    RUNNING
+    COMPLETED
+    FAILED
+    CANCELLED
+}
+
+enum StudyClassification {
+    CONFIRMATORY
+    EXPLORATORY
+    EXPLORATORY_DEMONSTRATION
+}
+
+model Scenario {
+    id                    String       @id @default(uuid())
+    name                  String
+    schemaVersion         String
+    scientificFingerprint String       @unique
+    configuration         Json
+    isCanonical           Boolean      @default(false)
+    createdAt             DateTime     @default(now())
+    experiments           Experiment[]
+}
+
+model Experiment {
+    id             String              @id @default(uuid())
+    name           String
+    classification StudyClassification
+    status         ExperimentStatus    @default(QUEUED)
+    design         Json
+    result         Json?
+    failureCode    String?
+    scenarioId     String
+    scenario       Scenario            @relation(fields: [scenarioId], references: [id])
+    createdAt      DateTime            @default(now())
+    startedAt      DateTime?
+    completedAt    DateTime?
+
+    @@index([status, createdAt])
+    @@index([scenarioId, createdAt])
+}

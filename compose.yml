@@ -1,0 +1,85 @@
+name: eventscape
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-eventscape}
+      POSTGRES_USER: ${POSTGRES_USER:-eventscape}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-eventscape-local}
+    volumes:
+      - eventscape-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-eventscape} -d ${POSTGRES_DB:-eventscape}"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+      start_period: 5s
+
+  db-init:
+    build:
+      context: .
+      target: db-init
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-eventscape}:${POSTGRES_PASSWORD:-eventscape-local}@db:5432/${POSTGRES_DB:-eventscape}
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+
+  api:
+    build:
+      context: .
+      target: api
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-eventscape}:${POSTGRES_PASSWORD:-eventscape-local}@db:5432/${POSTGRES_DB:-eventscape}
+      PORT: 3000
+      WEB_ORIGIN: ${WEB_ORIGIN:-http://localhost:5373}
+    ports:
+      - "${API_PORT:-3300}:3000"
+    depends_on:
+      db-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:3000/api/v1/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 10s
+
+  web:
+    build:
+      context: .
+      target: web
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:3300}
+    restart: unless-stopped
+    environment:
+      HOST: 0.0.0.0
+      PORT: 3000
+      ORIGIN: ${WEB_ORIGIN:-http://localhost:5373}
+    ports:
+      - "${WEB_PORT:-5373}:3000"
+    depends_on:
+      api:
+        condition: service_healthy
+
+  worker:
+    build:
+      context: .
+      target: worker
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-eventscape}:${POSTGRES_PASSWORD:-eventscape-local}@db:5432/${POSTGRES_DB:-eventscape}
+      ARTIFACT_DIR: /app/artifacts/canonical
+    volumes:
+      - eventscape-artifacts:/app/artifacts
+    depends_on:
+      db-init:
+        condition: service_completed_successfully
+    restart: "no"
+
+volumes:
+  eventscape-postgres:
+  eventscape-artifacts:
